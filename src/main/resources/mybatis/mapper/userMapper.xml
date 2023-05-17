@@ -1,0 +1,21 @@
+<mapper namespace="com.example.xqm.mapper.UserMapper" >
+    <resultMap id="BaseResultMap" type="com.example.xqm.dto.User" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="userName" property="userName" jdbcType="VARCHAR" />
+        <result column="password" property="password" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, userName, passWord, user_sex, nick_name
+    </sql>
+
+    <select id="getUser" resultMap="BaseResultMap" parameterType="java.lang.String" >
+       SELECT 
+       <include refid="Base_Column_List" />
+       FROM users
+       where username = {#userName}
+       and password = {#password}
+    </select>
+
+    
+</mapper>
